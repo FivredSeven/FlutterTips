@@ -1,5 +1,18 @@
 # FlutterTips
 
+#### flutter从二级页面退回到一级页面
+正常来说我们在flutter二级页面要退回到一级页面，可以调用Navigator.of(context).pop()
+但也有特殊情况
+例如我们的ThemeData选择了TargetPlatform.iOS，因为这样能支持向右滑动页面退回到上一级页面。
+这种情况下，回到上级页面并不需要调用Navigator.of(context).pop()。
+
+#### flutter与java混合编译，加载黑屏的问题
+debug包尤其明显，黑屏的时长甚至能达到2-3秒
+解决办法：
+* 1、flutter的父view初始化的时候设置为INVISIBLE
+* 2、给flutterView设置addFirstFrameListener
+* 3、在Listener的onFirstFrame()回调里，设置父view为VISIBLE
+
 #### 使用Offstage遇到的坑
 首先看一段简单的Offstage代码
 ```
